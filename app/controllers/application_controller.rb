@@ -3,8 +3,8 @@ class ApplicationController < ActionController::API
     
     include ActionController::Cookies
 
-    rescue from ActiveRecord::RecordInvalid, with: :render_unprocessable_entity 
-    rescue_from ActiveRecord::RecordNotFound, with :render_not_found
+    rescue_from ActiveRecord::RecordInvalid, with: :render_unprocessable_entity 
+    rescue_from ActiveRecord::RecordNotFound, with: :render_not_found
 
     def current_user
         @currentUser ||= User.find_by_id(session[:user_id])

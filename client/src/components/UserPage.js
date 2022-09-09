@@ -1,45 +1,89 @@
 import { useEffect, useState} from 'react'
-import {useParams} from 'react-router-dom'
+import protobuf from "protobufjs";
+const { Buffer } = require("buffer/");
 
-function UserPage(){
-    const [user,setUser] = useState()
-    const [loading,setLoading] = useState(true)
-    const [errors,setErrors] = useState(false)
 
-    const params = useParams()
-    const {id} = params
-    useEffect(()=> {
-        fetch(`/users/${id}`)
-        .then(res => {
-            if(res.ok){
-                res.json().then(user => {
-                    setUser(user)
-                    setLoading(false)
-                })
-            }else{
-                res.json().then(data => setErrors(data.error))
-            }
+function UserPage(username, updateUser){
+    const [stocks, setStocks] = useState([])
+
+    useEffect(() => {
+        const ws = new WebSocket("wss://streamer.finance.yahoo.com");
+        console.log(ws, 'ws check')
+
+        protobuf.load("./YPricingData.proto", (error, root) => {
+            if (error) {
+                    return console.log(error);
+                  }
+        
+                  console.log(root, "ROOT")
+        
+                  const Yaticker = root.lookupType("yaticker");
+
+                  console.log(Yaticker, "yaticker")
         })
 
-    },[])
+        // protobuf.load("./YPricingData.proto", (error, root) => {
+        //   if (error) {
+        //     return console.log(error);
+        //   }
 
-    if(loading) return <h1>Loading</h1>
-    if(errors) return <h1>{errors}</h1>
+        //   console.log(root, "ROOT")
+
+        //   const Yaticker = root.lookupType("yaticker");
+    
+        //   ws.onopen = function open() {
+        //     console.log("connected");
+        //     ws.send(
+        //       JSON.stringify({
+        //         subscribe: ("GME")
+        //           .split(",")
+        //           .map((symbol) => symbol.toUpperCase()),
+        //       })
+        //     );
+        //   };
+        //   ws.onclose = function close() {
+        //     console.log("disconnected");
+        //   };
+    
+        //   ws.onmessage = function incoming(message) {
+        //     const next = Yaticker.decode(new Buffer(message.data, "base64"));
+        //     setStocks((current) => {
+        //       let stock = current.find((stock) => stock.id === next.id);
+        //       if (stock) {
+        //         return current.map((stock) => {
+        //           if (stock.id === next.id) {
+        //             return {
+        //               ...next,
+        //               direction:
+        //                 stock.price < next.price
+        //                   ? "up"
+        //                   : stock.price > next.price
+        //                   ? "down"
+        //                   : stock.direction,
+        //             };
+        //           }
+        //           return stock;
+        //         });
+        //       } else {
+        //         return [
+        //           ...current,
+        //           {
+        //             ...next,
+        //             direction: "",
+        //           },
+        //         ];
+        //       }
+        //     });
+        //   };
+        // });
+      }, []);
+
     return (
-        <div>
-            <h1>{user.username}</h1>
-            <h3>Stocks</h3>
-            <ul>
-                {user.Stocks.map(Stock => (
-                    <li>
-                        <h2>({Stock.name})</h2>
-                        {/* FINISH THIS */}
-                    </li>
-                ))}
-            </ul>
-        </div>
+        <>
+            <h1>{username.username}</h1>
+            <h3>Stocks will display below: </h3>
+        </>
     )
-// FINISH THIS
 }
 
 

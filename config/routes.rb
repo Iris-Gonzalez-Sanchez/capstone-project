@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
   resources :stock_items
   resources :users
-  # resources :sessions
+  resources :sessions
   # resources :controller
 
   post "/login", to: "sessions#create"

@@ -8,13 +8,12 @@ import Home from "./components/Home";
 import { Routes, Route } from "react-router-dom";
 import UserPage from "./components/UserPage";
 import StockDetail from "./components/StockDetail";
-import StockFilter from "./components/StockFilter";
+// import StockFilter from "./components/StockFilter";
 // import ProductionForm from "./components/StockFilter"
 // import EditProductionForm from "./components/StockFilter";
 import Navigation from "./components/Navigation";
 // import { useNavigate } from "react-router-dom";
 // import NotFound from "./components/NotFound"
-
 
 function App() {
   const [stocks, setStocks] = useState([]);
@@ -30,8 +29,6 @@ function App() {
       }
     });
   }, []);
-
- 
 
   // const fetchStocks = () => {
   //   fetch('/stocks')
@@ -67,31 +64,29 @@ function App() {
 
   return (
     <>
-            <h1> Libertas Token </h1>
-      
+      <h1> Libertas Token </h1>
+
       <Navigation currentUser={currentUser} updateUser={updateUser} />
       <Routes>
+        <Route
+          path="/stocks/:id"
+          element={<StockDetail deleteStock={deleteStock} stocks={stocks} />}
+        />
 
-        <Route path="/stocks/:id" element={<StockDetail deleteStock={deleteStock} stocks={stocks}/>}/>
-    
+        <Route path="/signup" element={<SignUp updateUser={updateUser} />} />
 
-        <Route path="/signup" element={<SignUp updateUser={updateUser} />}/>
-
-        <Route path="/login" element={<Login updateUser={updateUser}/>}/>
-          
+        <Route path="/login" element={<Login updateUser={updateUser} />} />
 
         {currentUser ? (
-          <Route path="/users/:id" element={<UserPage updateUser={updateUser} />}/>
-        ):(<></>)
-        }
-      
+          <Route
+            path="/users/:id"
+            element={<UserPage currentUser={currentUser} updateUser={updateUser} />}
+          />
+        ) : (
+          <></>
+        )}
 
-      
-          
-
-        <Route exact path="/" element={ <Home />}/>
-         
-
+        <Route exact path="/" element={<Home />} />
       </Routes>
     </>
   );

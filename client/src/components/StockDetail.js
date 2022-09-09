@@ -4,37 +4,34 @@ import { useEffect, useState} from 'react'
 
 
 function StockDetail() {
-  const [stocks, setStocks] = useState([])
-  const [errors, setErrors] = useState(false)
-  const [currentUser, setCurrentUser] = useState(false)
+  // const [stocks, setStocks] = useState([])
+  // const [errors, setErrors] = useState(false)
 
-  useEffect(() => {
-    fetch("/me").then((res) => {
-      if (res.ok) {
-        res.json().then((userData) => setCurrentUser(userData));
-      } else {
-        res.json().then((json) => console.log(json.errors));
-      }
-    });
-  }, []);
+  // useEffect(() => {
+  //   fetch("/me").then((res) => {
+  //     if (res.ok) {
+  //       res.json().then((userData) => setCurrentUser(userData));
+  //     } else {
+  //       res.json().then((json) => console.log(json.errors));
+  //     }
+  //   });
+  // }, []);
 
-  const fetchStocks = () => {
-    fetch('/stocks')
-    .then(res => {
-      if(res.ok){
-        res.json().then(setStocks)
-      }else{
-        res.json().then(data => setErrors(data.error))
-      }
-    })
-  }
-  console.log(currentUser)
+  // const fetchStocks = () => {
+  //   fetch('/stocks')
+  //   .then(res => {
+  //     if(res.ok){
+  //       res.json().then(setStocks)
+  //     }else{
+  //       res.json().then(data => setErrors(data.error))
+  //     }
+  //   })
+  // }
 
-  const deleteStock = (id) => setStocks(current => current.filter(p => p.id !== id))
+  // const deleteStock = (id) => setStocks(current => current.filter(p => p.id !== id))
   
-  const updateUser = (user) => setCurrentUser(user)
 
-  if(errors) return <h1>{errors}</h1>
+  // if(errors) return <h1>{errors}</h1>
 }
 
 export default StockDetail;

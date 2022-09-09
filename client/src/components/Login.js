@@ -1,6 +1,5 @@
 import React, { useState } from "react";
-// import { useHistory } from "react-router-dom";
-// import { useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 // import { Form } from "../styled/Form";
 
 function Login({ updateUser }) {
@@ -9,8 +8,7 @@ function Login({ updateUser }) {
     password: "",
   });
   const [errors, setErrors] = useState(null);
-  // const history = useHistory()
-  // const navigate = useNavigate();
+  const navigate = useNavigate();
 
   const { username, password } = formData;
 
@@ -26,11 +24,12 @@ function Login({ updateUser }) {
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(user),
     }).then((res) => {
+      console.log(res, "res")
       if (res.ok) {
         res.json().then((user) => {
+          console.log(user, "user info")
           updateUser(user);
-          // history.push(`/users/${user.id}`)
-          // navigate(`/user`);
+          navigate(`/users/${user.id}`);
         });
       } else {
         res.json().then((json) => setErrors(json.error));
@@ -40,6 +39,7 @@ function Login({ updateUser }) {
 
   const handleChange = (e) => {
     const { name, value } = e.target;
+    console.log(name, value , "Name and Value ")
     setFormData({ ...formData, [name]: value });
   };
   return (
@@ -67,7 +67,7 @@ function Login({ updateUser }) {
             <input
               type="text"
               name="password"
-              value="{password}"
+              value={password}
               onChange={handleChange}
             />
 
