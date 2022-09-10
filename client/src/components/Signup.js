@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 // import {useHistory} from 'react-router-dom'
 import { useNavigate } from "react-router-dom";
-import { BrowserRouter } from "react-router-dom";
+// import { BrowserRouter } from "react-router-dom";
 // import Logo from "../assets/Logo.png";
 // import { form } from "../styled/Form";
 
@@ -48,14 +48,9 @@ function SignUp() {
   };
   return (
     <>
-      <div className="container" id="container">
-        <div className="overlay-container">
-          <div class="overlay-panel overlay-right">
-            
-            <p>Sign in or if new user, Sign up!</p>
-          </div>
-        </div>
+      <div className="signup-container" id="container">
         <div className="login-box">
+            <h1>Sign Up</h1>
 
           <form className="form-data" onSubmit={onSubmit}>
             <label>Username</label>

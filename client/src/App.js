@@ -17,7 +17,7 @@ import Navigation from "./components/Navigation";
 
 function App() {
   const [stocks, setStocks] = useState([]);
-  const [errors, setErrors] = useState(false);
+  // const [errors, setErrors] = useState(false);
   const [currentUser, setCurrentUser] = useState(false);
 
   useEffect(() => {
@@ -43,6 +43,7 @@ function App() {
   // console.log(currentUser)
 
   const addStock = (stock) => setStocks((current) => [...current, stock]);
+  console.log(addStock)
 
   const updateStock = (updatedStock) =>
     setStocks((current) => {
@@ -54,17 +55,18 @@ function App() {
         }
       });
     });
+  console.log(updateStock)
 
   const deleteStock = (id) =>
     setStocks((current) => current.filter((p) => p.id !== id));
 
   const updateUser = (user) => setCurrentUser(user);
 
-  if (errors) return <h1>{errors}</h1>;
+  // if (errors) return <h1>{errors}</h1>;
 
   return (
     <>
-      <h1> Libertas Token </h1>
+      <h1 className="project-title"> Libertas Token </h1>
 
       <Navigation currentUser={currentUser} updateUser={updateUser} />
       <Routes>

@@ -1,10 +1,12 @@
-import { useEffect, useState} from 'react'
+import { useEffect} from 'react'
+import StockDetail from './StockDetail';
+// import { useState } from 'react'
 import protobuf from "protobufjs";
-const { Buffer } = require("buffer/");
+// const { Buffer } = require("buffer/");
 
 
 function UserPage(username, updateUser){
-    const [stocks, setStocks] = useState([])
+    // const [stocks, setStocks] = useState([])
 
     useEffect(() => {
         const ws = new WebSocket("wss://streamer.finance.yahoo.com");
@@ -82,6 +84,7 @@ function UserPage(username, updateUser){
         <>
             <h1>{username.username}</h1>
             <h3>Stocks will display below: </h3>
+            <StockDetail/>
         </>
     )
 }
