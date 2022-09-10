@@ -46,7 +46,7 @@ function Login({ updateUser }) {
     <>
       <div className="container" id="container">
         <div className="overlay-container">
-          <div class="overlay-panel overlay-right">
+          <div className="overlay-panel overlay-right">
           {/* <h1>Welcome to Your Stock Tracker</h1> */}
             {/* <img src={Logo} alt="logo" /> */}
           </div>

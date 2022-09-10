@@ -5,7 +5,7 @@ function Home({ user }) {
       return<>
             <div className="homepage-container">
             <h1>✨✨Track Stocks with Ease✨✨</h1>
-            <h2>✨Brief Description Here✨</h2>
+            <h2>✨Libertas Token, the freedom to learn. Use this site to learn stock behaviors and predictions. ✨</h2>
             <p>Sign in or if new user, Sign up!</p>
 
             <h3>Click the tabs above to enter this site 😄</h3>

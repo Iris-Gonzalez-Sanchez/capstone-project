@@ -36,7 +36,7 @@ function Navigation({ currentUser, updateUser }) {
       </button>
       <ul className={`menuNav ${navbarOpen ? " showMenu" : ""}`}>
         {currentUser ? (
-          <div>
+          <div className="truman">
             <Link
               to="/stocks"
               activeClassName="active-link"
@@ -66,8 +66,8 @@ function Navigation({ currentUser, updateUser }) {
             </Link>
           </div>
         ) : (
-          <div>
-            <Link
+          <div className="jr">
+            <Link className="something"
               to="/"
               activeClassName="active-link"
               onClick={() => closeMenu()}
@@ -76,7 +76,7 @@ function Navigation({ currentUser, updateUser }) {
               Home
             </Link>
 
-            <Link
+            <Link className="something"
               to="/stocks"
               activeClassName="active-link"
               onClick={() => closeMenu()}
@@ -85,7 +85,7 @@ function Navigation({ currentUser, updateUser }) {
               Stock Listing
             </Link>
 
-            <Link
+            <Link className="something"
               to="/signup"
               activeClassName="active-link"
               onClick={() => closeMenu()}
@@ -96,10 +96,27 @@ function Navigation({ currentUser, updateUser }) {
           </div>
         )}
 
-        {currentUser ? (
+          {!currentUser ? (
+              <div className="jr">
+              <Link className="something"
+                to="/login"
+                activeClassName="active-link"
+                onClick={() => closeMenu()}
+                exact
+                //   style={{ color: "inherit", textDecoration: "inherit" }}
+              >
+                Sign In
+              </Link>
+              </div>) : (
+            <h4 className="announce-user">Welcome {currentUser.username}!</h4>
+          
+          )}
+
+        {/* {currentUser ? (
           <h4 className="announce-user">Welcome {currentUser.username}!</h4>
         ) : (
-          <Link
+          <div className="jr">
+          <Link className="something"
             to="/login"
             activeClassName="active-link"
             onClick={() => closeMenu()}
@@ -108,7 +125,8 @@ function Navigation({ currentUser, updateUser }) {
           >
             Sign In
           </Link>
-        )}
+          </div>
+        )} */}
       </ul>
     </nav>
   );
