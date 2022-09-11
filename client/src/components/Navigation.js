@@ -39,18 +39,18 @@ function Navigation({ currentUser, updateUser }) {
           <div className="truman">
             <Link
               to="/stocks"
-              activeClassName="active-link"
+              // activeClassName="active-link"
               onClick={() => closeMenu()}
-              exact
+              exact='true'
             >
               Stocks
             </Link>
 
             <Link
               to={`/users`}
-              activeClassName="active-link"
+              // activeClassName="active-link"
               onClick={() => closeMenu()}
-              exact
+              exact='true'
             >
               User Page
             </Link>
@@ -69,27 +69,27 @@ function Navigation({ currentUser, updateUser }) {
           <div className="jr">
             <Link className="something"
               to="/"
-              activeClassName="active-link"
+              // activeClassName="active-link"
               onClick={() => closeMenu()}
-              exact
+              exact='true'
             >
               Home
             </Link>
 
             <Link className="something"
               to="/stocks"
-              activeClassName="active-link"
+              // activeClassName="active-link"
               onClick={() => closeMenu()}
-              exact
+              exact='true'
             >
               Stock Listing
             </Link>
 
             <Link className="something"
               to="/signup"
-              activeClassName="active-link"
+              // activeClassName="active-link"
               onClick={() => closeMenu()}
-              exact
+              exact='true'
             >
               Sign Up
             </Link>
@@ -100,9 +100,9 @@ function Navigation({ currentUser, updateUser }) {
               <div className="jr">
               <Link className="something"
                 to="/login"
-                activeClassName="active-link"
+                // activeClassName="active-link"
                 onClick={() => closeMenu()}
-                exact
+                exact='true'
                 //   style={{ color: "inherit", textDecoration: "inherit" }}
               >
                 Sign In

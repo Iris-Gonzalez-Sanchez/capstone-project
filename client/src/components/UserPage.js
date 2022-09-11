@@ -1,4 +1,4 @@
-import { useEffect} from 'react'
+import { useEffect, useState} from 'react'
 import StockDetail from './StockDetail';
 // import { useState } from 'react'
 import protobuf from "protobufjs";
@@ -9,76 +9,23 @@ function UserPage(username, updateUser){
     // const [stocks, setStocks] = useState([])
 
     useEffect(() => {
-        const ws = new WebSocket("wss://streamer.finance.yahoo.com");
-        console.log(ws, 'ws check')
+        const socket = new WebSocket('wss://ws.finnhub.io?token=ccejkl2ad3i6bee11jfg')
+        // Connection opened -> Subscribe
+        socket.addEventListener('open', function (event) {
+            socket.send(JSON.stringify({'type':'subscribe', 'symbol': 'BINANCE:BTCUSDT'}))
+        });
 
-        protobuf.load("./YPricingData.proto", (error, root) => {
-            if (error) {
-                    return console.log(error);
-                  }
-        
-                  console.log(root, "ROOT")
-        
-                  const Yaticker = root.lookupType("yaticker");
+        // Listen for messages
+        socket.addEventListener('message', function (event) {
+            console.log('Message from server ', event.data);
+        });
 
-                  console.log(Yaticker, "yaticker")
-        })
-
-        // protobuf.load("./YPricingData.proto", (error, root) => {
-        //   if (error) {
-        //     return console.log(error);
-        //   }
-
-        //   console.log(root, "ROOT")
-
-        //   const Yaticker = root.lookupType("yaticker");
-    
-        //   ws.onopen = function open() {
-        //     console.log("connected");
-        //     ws.send(
-        //       JSON.stringify({
-        //         subscribe: ("GME")
-        //           .split(",")
-        //           .map((symbol) => symbol.toUpperCase()),
-        //       })
-        //     );
-        //   };
-        //   ws.onclose = function close() {
-        //     console.log("disconnected");
-        //   };
-    
-        //   ws.onmessage = function incoming(message) {
-        //     const next = Yaticker.decode(new Buffer(message.data, "base64"));
-        //     setStocks((current) => {
-        //       let stock = current.find((stock) => stock.id === next.id);
-        //       if (stock) {
-        //         return current.map((stock) => {
-        //           if (stock.id === next.id) {
-        //             return {
-        //               ...next,
-        //               direction:
-        //                 stock.price < next.price
-        //                   ? "up"
-        //                   : stock.price > next.price
-        //                   ? "down"
-        //                   : stock.direction,
-        //             };
-        //           }
-        //           return stock;
-        //         });
-        //       } else {
-        //         return [
-        //           ...current,
-        //           {
-        //             ...next,
-        //             direction: "",
-        //           },
-        //         ];
-        //       }
-        //     });
-        //   };
-        // });
-      }, []);
+        // Unsubscribe
+        var unsubscribe = function(symbol) {
+            socket.send(JSON.stringify({'type':'unsubscribe','symbol': symbol}))
+        }
+       
+    }, []);
 
     return (
         <>
