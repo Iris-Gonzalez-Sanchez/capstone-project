@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :user_stocks
   resources :stock_items
   resources :users
   resources :sessions
@@ -15,5 +16,5 @@ Rails.application.routes.draw do
   #     constraints: ->(req) { !req.xhr? && req.format.html? }
 
 
-  # delete "/logout", to: "sessions#destroy"
+  delete "/stock_item", to: "stock_items#destroy"
 end
