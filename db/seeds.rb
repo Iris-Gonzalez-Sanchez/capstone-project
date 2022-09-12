@@ -3,8 +3,12 @@ user1 = User.create(username: 'TiffanCo', password: 'testy')
 user2 = User.create(username: 'Colca3', password: 'zesty')
 puts "Users seeded!"
 
+puts "Seeding User_stocks..."
+list1 = UserStock.create(user: user1, stock_items:[stock_item1, stock_item2])
+list2 = UserStock.create(user: user2, stock_items: [stock_item9,stock_item7])
+
 puts "- 📈📉 Seeding stock_items..."
-stock_item1 = StockItem.create(ticker_symbol: 'AAPL', price: '154')
+stock_item1 = StockItem.create(ticker_symbol: 'AAPL', price: '154',  )
 stock_item2 = StockItem.create(ticker_symbol: 'DOCU', price: '56')
 stock_item3 = StockItem.create(ticker_symbol: 'PG', price: '138')
 stock_item4 = StockItem.create(ticker_symbol: 'JNJ', price: '165')
@@ -15,9 +19,6 @@ stock_item8 = StockItem.create(ticker_symbol: 'CLX', price: '145')
 stock_item9 = StockItem.create(ticker_symbol: 'NKE', price: '108')
 puts "Stock_items seeded!"
 
-puts "Seeding User_stocks..."
-list1 = UserStock.create(user1, stock_item1, stock_item2)
-list2 = UserStock.create(user2, stock_item9, stock_item7)
 
 
 puts "✅ Done seeding!"

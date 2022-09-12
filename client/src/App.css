@@ -150,6 +150,13 @@ h4 {
   border: none;
 }
 
+.stock-button {
+  display: flex;
+  /* flex-flow:column wrap; */
+  align-items:flex-end;
+  justify-content: center;
+}
+
 
 .menuNav {
   /* overflow-y: scroll; */

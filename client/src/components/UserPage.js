@@ -42,7 +42,7 @@ function UserPage(username) {
             <ul>
                 {list.map(singleStock => (
                     <li>
-                        <button
+                        <button className="stock-button"
                             onClick={() => chooseStock(singleStock)}
                         >{singleStock}</button>
                     </li>
