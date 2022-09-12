@@ -33,6 +33,12 @@ html, body, #root {
   
 }
 
+.under-nav {
+  display: flex;
+  align-self: center;
+  margin: 50px;
+}
+
 .homepage-container,
 .homepage-container:before,
 .homepage-container:after { 
@@ -169,6 +175,9 @@ h4 {
 
 a {
   /* display: block; */
+  /* display: flex; */
+  /* align-items: stretch; */
+
   padding: 10px 40px;
   text-decoration: none;
   color: #7b7b7b;

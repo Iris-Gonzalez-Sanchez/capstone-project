@@ -26,11 +26,11 @@ function Navigation({ currentUser, updateUser }) {
       <button onClick={handleToggle}>
         {navbarOpen ? (
           <MdClose
-            style={{ color: "#7b7b7b", width: "40px", height: "210px" }}
+            style={{ color: "#7b7b7b", width: "40px", height: "305px" }}
           />
         ) : (
           <FiMenu
-            style={{ color: "#7b7b7b", width: "40px", height: "210px" }}
+            style={{ color: "#7b7b7b", width: "40px", height: "305px" }}
           />
         )}
       </button>

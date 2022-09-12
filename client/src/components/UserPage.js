@@ -38,7 +38,7 @@ function UserPage(username) {
     return (
         <>
             <h1>{username.username}</h1>
-            <h3>Stocks will display below: </h3>
+            <h3 className='under-nav'>Stocks will display below: </h3>
             <ul>
                 {list.map(singleStock => (
                     <li>
