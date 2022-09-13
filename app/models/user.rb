@@ -1,5 +1,7 @@
 class User < ApplicationRecord
-    belongs_to :user_stock
+    has_many :user_stocks
+    has_many :stock_items, through: :user_stocks
+
 
     validates :username, uniqueness: true
     has_secure_password

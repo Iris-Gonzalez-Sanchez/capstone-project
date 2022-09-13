@@ -23,8 +23,10 @@ ActiveRecord::Schema[7.0].define(version: 2022_09_12_012534) do
 
   create_table "user_stocks", force: :cascade do |t|
     t.bigint "user_id", null: false
+    t.bigint "stock_item_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["stock_item_id"], name: "index_user_stocks_on_stock_item_id"
     t.index ["user_id"], name: "index_user_stocks_on_user_id"
   end
 
@@ -36,5 +38,6 @@ ActiveRecord::Schema[7.0].define(version: 2022_09_12_012534) do
     t.boolean "admin"
   end
 
+  add_foreign_key "user_stocks", "stock_items"
   add_foreign_key "user_stocks", "users"
 end
