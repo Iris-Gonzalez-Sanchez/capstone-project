@@ -7,6 +7,7 @@ function UserPage(username) {
     const [currStockShowing, setCurrStockShowing] = useState("")
     const [newStock, setNewStock] = useState("")
 
+
     const callStock = (givenStock) => {
         const socket = new WebSocket('wss://ws.finnhub.io?token=ccejkl2ad3i6bee11jfg');
 
@@ -32,12 +33,13 @@ function UserPage(username) {
     const chooseStock = (stock) => {
         setCurrStockShowing(stock);
         callStock(stock);
+        console.log(chooseStock, "chooseStock here: ")
     };
 
     const addStock = (event) => { 
         event.preventDefault();
         setStocks(() => [...stocks, newStock])
-        // console.log(addStock)
+        console.log(addStock, "addStock here: ")
     }
 
     const deleteStock = (id) =>

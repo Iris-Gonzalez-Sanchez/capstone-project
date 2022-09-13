@@ -22,7 +22,7 @@ function App() {
     });
   }, []);
 
-      const updateUser = (user) => setCurrentUser(user);
+  const updateUser = (user) => setCurrentUser(user);
 
   // if (errors) return <h1>{errors}</h1>;
 
@@ -32,6 +32,7 @@ function App() {
 
       <Navigation currentUser={currentUser} updateUser={updateUser} />
       <Routes>
+
 
         <Route path="/signup" element={<SignUp updateUser={updateUser} />} />
 
