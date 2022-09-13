@@ -1,5 +1,7 @@
 import React, { useEffect, useState } from "react";
 import "./App.css";
+// import "./Home/Home.css";
+
 import SignUp from "./components/Signup/Signup";
 import Login from "./components/Login/Login";
 import Home from "./components/Home/Home";

@@ -2,6 +2,8 @@ import { Link } from "react-router-dom";
 import React, { useState } from "react";
 import { MdClose } from "react-icons/md";
 import { FiMenu } from "react-icons/fi";
+import "./Navigation.css";
+
 
 function Navigation({ currentUser, updateUser }) {
   const handleLogOut = () => {

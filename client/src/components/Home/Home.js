@@ -1,3 +1,5 @@
+import "./Home.css";
+
 function Home({ user }) {
   
     if (user) {

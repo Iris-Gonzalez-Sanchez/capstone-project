@@ -1,6 +1,6 @@
 import React, { useState } from "react";
-// import {useHistory} from 'react-router-dom'
 import { useNavigate } from "react-router-dom";
+import "./Signup.css"
 // import { BrowserRouter } from "react-router-dom";
 // import Logo from "../assets/Logo.png";
 // import { form } from "../styled/Form";
