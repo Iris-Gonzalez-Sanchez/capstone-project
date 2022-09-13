@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react'
-import SingleStock from './SingleStock';
+import SingleStock from './SingleStock/SingleStock';
 
 function UserPage(username) {
     const [stocks, setStocks] = useState(["BINANCE:BTCUSDT", "BINANCE:LTCBTC"])

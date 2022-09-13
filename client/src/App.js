@@ -1,13 +1,11 @@
 import React, { useEffect, useState } from "react";
 import "./App.css";
-import SignUp from "./components/Signup";
-import Login from "./components/Login";
-import Home from "./components/Home";
-
+import SignUp from "./components/Signup/Signup";
+import Login from "./components/Login/Login";
+import Home from "./components/Home/Home";
 import { Routes, Route } from "react-router-dom";
-import UserPage from "./components/UserPage";
-import StockDetail from "./components/StockDetail";
-import Navigation from "./components/Navigation";
+import UserPage from "./components/Userpage/UserPage";
+import Navigation from "./components/Navigation/Navigation";
 
 function App() {
   const [currentUser, setCurrentUser] = useState(false);
