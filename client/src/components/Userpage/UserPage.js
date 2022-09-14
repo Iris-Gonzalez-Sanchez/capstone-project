@@ -1,12 +1,29 @@
-import { useEffect, useState } from 'react'
-import SingleStock from './SingleStock/SingleStock';
+import { useEffect, useState, useRef } from 'react'
 import "./UserPage.css"
+import { FormControl, InputLabel, Input, FormHelperText, Button, ListItemButton, ListItemText, Typography, Box } from '@mui/material';
+
 function UserPage(username) {
     const [stocks, setStocks] = useState(["BINANCE:BTCUSDT", "BINANCE:LTCBTC"])
     const [price, setPrice] = useState(0);
     const [currStockShowing, setCurrStockShowing] = useState("")
     const [newStock, setNewStock] = useState("")
+    const prevPrice = usePrevious(price)
 
+    function usePrevious(value) {
+        const ref = useRef();
+        useEffect(() => {
+          ref.current = value; //assign the value of ref to the argument
+        },[value]); //this code will run when the value of 'value' changes
+        return ref.current; //in the end, return the current ref value.
+      }
+
+
+      let priceIncrease = null;
+      if (price !== 0 && prevPrice > price){
+        priceIncrease = false;
+      } else if (price !== 0 && prevPrice < price){
+        priceIncrease = true;
+      }
 
     const callStock = (givenStock) => {
         const socket = new WebSocket('wss://ws.finnhub.io?token=ccejkl2ad3i6bee11jfg');
@@ -14,19 +31,18 @@ function UserPage(username) {
 
         // Connection opened -> Subscribe
         socket.addEventListener('open', function () {
-            socket.send(JSON.stringify({'type':'subscribe', 'symbol': `${givenStock}`}))
+            socket.send(JSON.stringify({ 'type': 'subscribe', 'symbol': `${givenStock}` }))
         });
-        
+
         // Listen for messages
         socket.addEventListener('message', function (event) {
-            console.log('Message from server ', event.data);
             let parsedData = JSON.parse(event.data);
             setPrice(parsedData.data[0].p);
         });
-        
+
         // Unsubscribe
-         let unsubscribe = function(symbol) {
-            socket.send(JSON.stringify({'type':'unsubscribe','symbol': symbol}))
+        let unsubscribe = function (symbol) {
+            socket.send(JSON.stringify({ 'type': 'unsubscribe', 'symbol': symbol }))
         }
     }
 
@@ -36,8 +52,10 @@ function UserPage(username) {
         console.log(chooseStock, "chooseStock here: ")
     };
 
-    const addStock = (event) => { 
+    const addStock = (event) => {
         event.preventDefault();
+        console.log("add stock")
+
         setStocks(() => [...stocks, newStock])
         console.log(addStock, "addStock here: ")
     }
@@ -49,33 +67,44 @@ function UserPage(username) {
         setNewStock(event.target.value)
         console.log(newStock, "Inside updateStock")
     }
-   
-
-
-
 
     return (
         <>
             <h1>{username.username}</h1>
-            <h3 className="under-nav">Stocks will display below: </h3>
-            <ul className="stock-list">
-                {stocks.map(singleStock => (
-                    <li>
-                        <button className="stock-button"
-                            onClick={() => chooseStock(singleStock)}
-                        >{singleStock}</button>
-                    </li>
-                ))}
-            </ul>
-            <form onSubmit={addStock}>
-                <label for="Stock Name">Enter Company Stock Symbol:</label>
-                <input name="Stock Name" type="text" value={newStock} onChange={updateStock}>
-                </input>
-                <input type="submit" value="Click to submit"/>
-            </form>
             {currStockShowing !== "" && (
-                <SingleStock symbol={currStockShowing} price={price} />
+                <Box sx={{
+                    width: 400,
+                    height: 50,
+                }} className="box">
+                    <Typography id="stockPickedName" sx={{ fontSize: 26 }} variant="h1" color="text.secondary" gutterBottom>
+                        {currStockShowing} 
+                    </Typography>
+                    <Typography sx={{ fontSize: 24 }} variant="h2" color="text.primary" gutterBottom>
+                        {price} 
+                        {priceIncrease === true && "🥂"}
+                        {priceIncrease === false && "🤷🏼‍♀️"}
+                    </Typography>
+                </Box>
             )}
+
+            <Typography variant="h5" >Your personalized stock list:</Typography>
+
+            <div className="listAndSubmitForm">
+                <div className="listedStocks">
+                    {stocks.map(singleStock => (
+                        <ListItemButton component="a" href="#simple-list" onClick={() => chooseStock(singleStock)}>
+                            <ListItemText primary={singleStock} />
+                        </ListItemButton>
+                    ))}
+                </div>
+
+                <FormControl id="form">
+                    <InputLabel htmlFor="my-input">Add a stock</InputLabel>
+                    <Input id="my-input" aria-describedby="my-helper-text" value={newStock} onChange={updateStock} />
+                    <FormHelperText id="my-helper-text">Must be their listed symbol!</FormHelperText>
+                    <Button className="add-stock-button" variant="contained" type="submit" onClick={addStock}>Enter 🚀</Button>
+                </FormControl>
+            </div>
         </>
     )
 }
