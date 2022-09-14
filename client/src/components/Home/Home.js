@@ -9,7 +9,8 @@ function Home({ user }) {
            <div>
             <div>
 
-                <h2>✨Libertas Token, the freedom to learn. Use this site to learn stock behaviors and predictions. ✨</h2>
+                <h2>✨Libertas Token, the freedom to learn. </h2>
+                <h2>Use this site to learn stock behaviors and predictions. ✨</h2>
               </div>
 
               <div>
