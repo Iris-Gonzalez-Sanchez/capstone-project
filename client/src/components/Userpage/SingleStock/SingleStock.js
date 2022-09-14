@@ -12,4 +12,4 @@ function SingleStock (props) {
     );
 }
 
-export default SingleStock;
+export default SingleStock; 

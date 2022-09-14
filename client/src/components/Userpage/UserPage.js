@@ -9,6 +9,8 @@ function UserPage(username) {
     const [newStock, setNewStock] = useState("")
     const prevPrice = usePrevious(price)
 
+    console.log(price, "price")
+
     function usePrevious(value) {
         const ref = useRef();
         useEffect(() => {
@@ -92,8 +94,8 @@ function UserPage(username) {
             <div className="listAndSubmitForm">
                 <div className="listedStocks">
                     {stocks.map(singleStock => (
-                        <ListItemButton component="a" href="#simple-list" onClick={() => chooseStock(singleStock)}>
-                            <ListItemText primary={singleStock} />
+                        <ListItemButton key={singleStock.index} component="a" href="#simple-list" onClick={() => chooseStock(singleStock)}>
+                            <ListItemText key={singleStock.index} primary={singleStock} />
                         </ListItemButton>
                     ))}
                 </div>
@@ -102,7 +104,7 @@ function UserPage(username) {
                     <InputLabel htmlFor="my-input">Add a stock</InputLabel>
                     <Input id="my-input" aria-describedby="my-helper-text" value={newStock} onChange={updateStock} />
                     <FormHelperText id="my-helper-text">Must be their listed symbol!</FormHelperText>
-                    <Button className="add-stock-button" variant="contained" type="submit" onClick={addStock}>Enter 🚀</Button>
+                    <Button id="add-stock-button" variant="contained" type="submit" onClick={addStock}>Enter 🚀</Button>
                 </FormControl>
             </div>
         </>

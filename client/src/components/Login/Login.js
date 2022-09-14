@@ -46,17 +46,10 @@ function Login({ updateUser }) {
   };
   return (
     <>
-      <div className="container" id="container">
-        <div className="overlay-container">
-          <div className="overlay-panel overlay-right">
-          {/* <h1>Welcome to Your Stock Tracker</h1> */}
-            {/* <img src={Logo} alt="logo" /> */}
-          </div>
-        </div>
-        <div className="login-box login-container">
+        <div className="login-container">
           <form className="form-data" onSubmit={onSubmit}>
             <h1>Login</h1>
-            <label>Username</label>
+            <label className="login-username" >Username</label>
             <input
               type="text"
               name="username"
@@ -65,11 +58,12 @@ function Login({ updateUser }) {
               placeholder="Username"
             />
 
-            <label>Password</label>
+            <label className="login-password">Password</label>
             <input
-              type="text"
+              type="password"
               name="password"
               value={password}
+              placeholder="*****"
               onChange={handleChange}
             />
 
@@ -81,7 +75,7 @@ function Login({ updateUser }) {
             {errors ? <h4>{errors}</h4> : null}
           </div>
         </div>
-      </div>
+    
     </>
   );
 }

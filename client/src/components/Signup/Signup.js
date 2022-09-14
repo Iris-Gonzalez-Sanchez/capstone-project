@@ -53,7 +53,7 @@ function SignUp() {
             <h1>Sign Up</h1>
 
           <form className="form-data" onSubmit={onSubmit}>
-            <label>Username</label>
+            <label className="signup-username" >Username</label>
             <input
               type="text"
               name="username"
@@ -62,13 +62,13 @@ function SignUp() {
               placeholder="username"
             />
 
-            <label>Password</label>
+            <label className="signup-password">Password</label>
             <input
               type="password"
               name="password"
               value={password}
               onChange={handleChange}
-              placeholder="secret"
+              placeholder="*****"
             />
    
         
@@ -82,6 +82,7 @@ function SignUp() {
                   <h4>
                     {" "}
                     {error[0]}
+                    {" "}
                     {error[1]}{" "}
                   </h4>
                 </div>

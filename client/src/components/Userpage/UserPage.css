@@ -37,6 +37,6 @@
     height: 7vh;
 }
 
-.add-stock-button {
-    color:#fcf8f5;
+#add-stock-button {
+    background-color:#debbee;
 }

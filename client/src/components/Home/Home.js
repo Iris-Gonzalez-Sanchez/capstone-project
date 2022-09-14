@@ -20,9 +20,13 @@ function Home({ user }) {
             <h3>Click the Stock tab above to add stocks you'd like to track onto your UserPage 😄</h3>
             <h4>✨✨Libertas Token, Track Stocks with Ease✨✨</h4>
           </div>
+          {/* 
+          <div className="gif-container">
+            <div className="gif-here">
+            </div>
+          </div> */}
 
-          <div className="gif-here">
-          </div>
+          <img className="gif-here" src="https://media3.giphy.com/media/3o7buf6dkxZUWiHVW8/giphy.gif?cid=790b76115c9afdae28b1ddf6efdb37a4991a0e47148b84a7&rid=giphy.gif&ct=g" alt="logo"></img>
 
         </div>
 
