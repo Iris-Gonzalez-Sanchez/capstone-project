@@ -9,7 +9,6 @@
   background-image: url("https://thumbs.dreamstime.com/b/aesthetic-white-background-golden-sun-face-clouds-stars-magic-tarot-card-celestial-banner-frame-astrology-bohemian-211417794.jpg");
   background-size: cover;
   background-repeat: no-repeat;
-  opacity: 0.8;
 
   flex: .18;
   padding: 15px 50px;
@@ -48,27 +47,60 @@
   }
 
 
-.section-bg1 {
+/* .section-bg1 {
     background-color: rgb(234, 244, 249);
   }
   
   .section-bg2 {
     background-color: rgb(234, 244, 249);
+  } */
+
+  .main-container {
+    border: 3px dotted #d5ae50;
+    width: 700px;
+    margin: auto;
+    display: flex;
+    flex-wrap: wrap;
+    align-content: space-around;
+    justify-content:center;
+    
   }
 
   h2 {
+    display: flex;
+    justify-content: center;
     font-size: 40px;
     line-height: 1.2;
   }
   
   h3 {
+    display: flex;
+    justify-content: center;
     font-size: 25px;
     line-height: 2;
     margin: 0;
   }
-  
+
   h4 {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+
+  .gif-here {
+    display: block;
+    width:200px;
+    height:200px;
+    border: 3px groove #d5ae50;
+    background-color: #7b7b7b;
+    background-image: url(https://im4.ezgif.com/tmp/ezgif-4-3e002cbf6a.gif);
+    background-position: center;
+    color: #fff;
+    margin-top: 10px;
+    margin-bottom: 30px;
+  }
+  
+ .footer {
     font-size: 20px;
-    line-height: 3;
-    margin: 0;
+    color: #7b7b7b;
   }

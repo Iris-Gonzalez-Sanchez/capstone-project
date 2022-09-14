@@ -32,7 +32,7 @@ function App() {
 
   return (
     <>
- <div className="project-title"> Libertas Token </div>
+    <div className="project-title"> Libertas Token </div>
       {currentUser ? (
         <div className="NavWithUser">
           <a href="/">Home</a>
