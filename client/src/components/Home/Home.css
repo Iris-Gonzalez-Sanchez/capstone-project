@@ -55,13 +55,22 @@
     flex-wrap: wrap;
     align-content: space-around;
     justify-content: center;
+    color: #dbc0dc;
     
+  }
+
+  .heading {
+    color: #d2b0d3;
+    font-size: 40px;
+  }
+
+  .subheading {
+    font-size: 30px;
   }
 
   h2 {
     display: flex;
     justify-content: center;
-    font-size: 40px;
     line-height: 1.2;
     text-align: center;
   }
@@ -69,7 +78,7 @@
   h3 {
     display: flex;
     justify-content: center;
-    font-size: 25px;
+    font-size: 20px;
     line-height: 2;
     margin: 0;
     width: 550px;
@@ -101,7 +110,7 @@
   
  .footer {
     font-size: 20px;
-    color: #7b7b7b;
+    color: #debbee;
   }
 
   .textBox {
