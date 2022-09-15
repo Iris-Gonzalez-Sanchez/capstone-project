@@ -40,3 +40,22 @@
 #add-stock-button {
     background-color:#debbee;
 }
+
+.buttonContainer {
+    display: flex;
+    flex-direction: row;
+}
+
+#deleteButton {
+    margin-left: 5px;
+}
+
+#shrugEmoji {
+    margin-left: 10px;
+    font-size: 30px;
+}
+
+#champagne {
+    margin-left: 10px;
+    font-size: 30px;
+}

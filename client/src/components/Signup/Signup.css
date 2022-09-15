@@ -14,23 +14,26 @@
     margin-top: 80px;
     margin-left: auto;
     margin-right: auto;
-    border: 7px dotted #cdb0ac;
+    border: 7px dotted #d5bbbc;
   }
 
   .signup-button {
     border-radius: 7px;
-    border: 2px groove #d5ae50;
-    background-color: #cdb0ac;
+    border: 2px groove #d9b560;
+    background-color: #d9b560;
     box-shadow: 0 5px #d5bbbc;
     font-size: 20px;
+    color: #f2f2f2;
+    font-weight: bold;
   }
 
   .signup-button:hover {
-    background-color: #d5ae50;
+    background-color: #d5bbbc;
+
   }
 
   .signup-button:active {
-    background-color: #cdb0ac;
+    background-color: #d9b560;
     box-shadow: 0 3px #d5bbbc;
     transform: translateY(4px);
   }
@@ -47,4 +50,8 @@
 
   h1{
     font-size: 44px;
+  }
+
+  input {
+    text-align: center;
   }

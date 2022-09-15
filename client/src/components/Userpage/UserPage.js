@@ -1,31 +1,30 @@
 import { useEffect, useState, useRef } from 'react'
 import "./UserPage.css"
-import { FormControl, InputLabel, Input, FormHelperText, Button, ListItemButton, ListItemText, Typography, Box } from '@mui/material';
+import { FormControl, InputLabel, Input, FormHelperText, Button, ListItemButton, ListItemText, Typography, Box, IconButton } from '@mui/material';
+import DeleteIcon from '@mui/icons-material/Delete';
 
 function UserPage(username) {
-    const [stocks, setStocks] = useState(["BINANCE:BTCUSDT", "BINANCE:LTCBTC"])
+    const [stocks, setStocks] = useState(["AAPL", "MSFT"])
     const [price, setPrice] = useState(0);
     const [currStockShowing, setCurrStockShowing] = useState("")
     const [newStock, setNewStock] = useState("")
     const prevPrice = usePrevious(price)
 
-    console.log(newStock, "newStock")
-
     function usePrevious(value) {
         const ref = useRef();
         useEffect(() => {
-          ref.current = value; //assign the value of ref to the argument
-        },[value]); //this code will run when the value of 'value' changes
+            ref.current = value; //assign the value of ref to the argument
+        }, [value]); //this code will run when the value of 'value' changes
         return ref.current; //in the end, return the current ref value.
-      }
+    }
 
 
-      let priceIncrease = null;
-      if (price !== 0 && prevPrice > price){
+    let priceIncrease = null;
+    if (price !== 0 && prevPrice > price) {
         priceIncrease = false;
-      } else if (price !== 0 && prevPrice < price){
+    } else if (price !== 0 && prevPrice < price) {
         priceIncrease = true;
-      }
+    }
 
     const callStock = (givenStock) => {
         const socket = new WebSocket('wss://ws.finnhub.io?token=ccejkl2ad3i6bee11jfg');
@@ -65,18 +64,18 @@ function UserPage(username) {
         }
         let stockPrice = {
             method: "POST",
-            headers: {"Content-Type": "application/json"},
+            headers: { "Content-Type": "application/json" },
             body: JSON.stringify(finalForm)
         }
-        fetch("/user_stocks", stockPrice).then(res=> {
-            if(res.ok){
-                res.json().then(data=>console.log(data, "DATA"))
+        fetch("/user_stocks", stockPrice).then(res => {
+            if (res.ok) {
+                res.json().then(data => console.log(data, "DATA"))
             }
         })
     }
 
-    const deleteStock = (id) =>
-        setStocks((current) => current.filter((p) => p.id !== id));
+    const deleteStock = (stock) =>
+        setStocks((current) => current.filter((p) => p !== stock));
 
     const updateStock = (event) => {
         setNewStock(event.target.value)
@@ -92,12 +91,16 @@ function UserPage(username) {
                     height: 50,
                 }} className="box">
                     <Typography id="stockPickedName" sx={{ fontSize: 26 }} variant="h1" color="text.secondary" gutterBottom>
-                        {currStockShowing} 
+                        {currStockShowing}
                     </Typography>
                     <Typography sx={{ fontSize: 24 }} variant="h2" color="text.primary" gutterBottom>
-                        {price} 
-                        {priceIncrease === true && "🥂"}
-                        {priceIncrease === false && "🤷🏼‍♀️"}
+                        {price}
+                        {priceIncrease === true && (
+                            <div id="champagne">🥂</div>
+                        )}
+                        {priceIncrease === false && (
+                            <div id="shrugEmoji">🤷‍♀️</div>
+                        )}
                     </Typography>
                 </Box>
             )}
@@ -107,9 +110,15 @@ function UserPage(username) {
             <div className="listAndSubmitForm">
                 <div className="listedStocks">
                     {stocks.map(singleStock => (
-                        <ListItemButton key={singleStock.index} component="a" href="#simple-list" onClick={() => chooseStock(singleStock)}>
-                            <ListItemText key={singleStock.index} primary={singleStock} />
-                        </ListItemButton>
+                        <div className="buttonContainer">
+                            <ListItemButton key={singleStock.index} component="a" href="#simple-list" onClick={() => chooseStock(singleStock)}>
+                                <ListItemText key={singleStock.index} primary={singleStock} />
+                            </ListItemButton>
+                            <IconButton id="deleteButton" aria-label="delete" onClick={() => deleteStock(singleStock)}>
+                                <DeleteIcon />
+                            </IconButton>
+                        </div>
+
                     ))}
                 </div>
 
