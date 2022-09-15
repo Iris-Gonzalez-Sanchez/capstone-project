@@ -56,6 +56,7 @@ function Login({ updateUser }) {
               value={username}
               onChange={handleChange}
               placeholder="Username"
+              className="login-input"
             />
 
             <label className="login-password">Password</label>
@@ -65,6 +66,7 @@ function Login({ updateUser }) {
               value={password}
               placeholder="*****"
               onChange={handleChange}
+              className="login-input"
             />
 
             <button type="submit" value="Log in!" className="log">

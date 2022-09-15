@@ -3,6 +3,7 @@
   justify-content: center;
   align-items: center;
   font-size: 60px;
+  font-weight: bold;
   color: #debbee;
   text-shadow: 1.3px 4.5px #d4a7e9; 
   height: 95px;
@@ -75,14 +76,18 @@
     text-align: center;
   }
   
-  h3 {
+  .list-title {
     display: flex;
     justify-content: center;
+  }
+
+  h3 {
+    display: flex;
+    justify-content: flex-start;
     font-size: 20px;
     line-height: 2;
     margin: 0;
     width: 550px;
-
   }
 
   h4 {

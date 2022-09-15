@@ -105,7 +105,7 @@ function UserPage(username) {
                 </Box>
             )}
 
-            <Typography variant="h5" >Your personalized stock list:</Typography>
+            <Typography id="userPageTitle" variant="h5" >Your personalized stock list:</Typography>
 
             <div className="listAndSubmitForm">
                 <div className="listedStocks">
@@ -123,10 +123,10 @@ function UserPage(username) {
                 </div>
 
                 <FormControl id="form">
-                    <InputLabel htmlFor="my-input">Add a stock</InputLabel>
+                    <InputLabel id="search-stock-input" htmlFor="my-input">Add a stock</InputLabel>
                     <Input id="my-input" aria-describedby="my-helper-text" value={newStock} onChange={updateStock} />
                     <FormHelperText id="my-helper-text">Must be their listed symbol!</FormHelperText>
-                    <Button id="add-stock-button" variant="contained" type="submit" onClick={addStock}>Enter 🚀</Button>
+                    <Button id="add-stock-button" variant="contained" type="submit" onClick={addStock}>🌎 Enter 🌏</Button>
                 </FormControl>
             </div>
         </>

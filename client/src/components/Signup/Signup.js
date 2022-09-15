@@ -59,7 +59,8 @@ function SignUp() {
               name="username"
               value={username}
               onChange={handleChange}
-              placeholder="username"
+              placeholder="Username"
+              className="signup-input"
             />
 
             <label className="signup-password">Password</label>
@@ -69,6 +70,7 @@ function SignUp() {
               value={password}
               onChange={handleChange}
               placeholder="*****"
+              className="signup-input"
             />
    
         

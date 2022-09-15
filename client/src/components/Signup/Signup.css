@@ -11,7 +11,7 @@
     
     width: 700px;
     height: 330px;
-    margin-top: 80px;
+    margin-top: 90px;
     margin-left: auto;
     margin-right: auto;
     border: 7px dotted #d5bbbc;
@@ -54,4 +54,10 @@
 
   input {
     text-align: center;
+  }
+
+  .signup-input {
+    border: 4px groove #d9b560;
+    color: #7b7b7b;
+    font-family: 'Shrikhand', cursive;
   }

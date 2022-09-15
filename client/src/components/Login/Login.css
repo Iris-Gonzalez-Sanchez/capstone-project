@@ -44,7 +44,11 @@
   flex-wrap: wrap;
   width: 150px;
   gap: 25px;
-  /* margin-left: auto;
-  margin-right: auto; */
+}
+
+.login-input {
+  border: 4px groove #d5bbbc;
+  color: #7b7b7b;
+  font-family: 'Shrikhand', cursive;
 }
 

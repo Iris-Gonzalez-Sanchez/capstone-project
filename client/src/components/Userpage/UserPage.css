@@ -23,10 +23,13 @@
     width: 768px;
     border: 4px groove #d5ae50;
     border-radius: 10px;
+    color: #d5ae50;
+
 }
 
 #stockPickedName {
     margin-right: 20px;
+    font-weight: 3;
 }
 
 .NavWithUser {
@@ -39,6 +42,7 @@
 
 #add-stock-button {
     background-color:#debbee;
+    font-family: 'Shrikhand', cursive;
 }
 
 .buttonContainer {
@@ -58,4 +62,19 @@
 #champagne {
     margin-left: 10px;
     font-size: 30px;
+}
+
+#userPageTitle {
+    color: #debbee;
+    font-weight: bold;
+    font-family: 'Shrikhand', cursive;
+}
+
+#search-stock-input {
+    color: #debbee;
+    font-family: 'Shrikhand', cursive;
+}
+
+#my-input {
+    color: #d5ae50;
 }
