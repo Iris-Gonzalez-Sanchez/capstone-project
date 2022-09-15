@@ -9,7 +9,7 @@ function UserPage(username) {
     const [newStock, setNewStock] = useState("")
     const prevPrice = usePrevious(price)
 
-    console.log(price, "price")
+    console.log(newStock, "newStock")
 
     function usePrevious(value) {
         const ref = useRef();
@@ -60,6 +60,19 @@ function UserPage(username) {
 
         setStocks(() => [...stocks, newStock])
         console.log(addStock, "addStock here: ")
+        let finalForm = {
+            price: price,
+        }
+        let stockPrice = {
+            method: "POST",
+            headers: {"Content-Type": "application/json"},
+            body: JSON.stringify(finalForm)
+        }
+        fetch("/user_stocks", stockPrice).then(res=> {
+            if(res.ok){
+                res.json().then(data=>console.log(data, "DATA"))
+            }
+        })
     }
 
     const deleteStock = (id) =>
