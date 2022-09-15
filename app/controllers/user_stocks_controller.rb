@@ -19,4 +19,15 @@ class UserStocksController < ApplicationController
     end
 
 
+    def create
+        user_stock = UserStock.create!(strong_params)
+        render json: user_stock status: :created
+    end
+
+private
+
+def strong_params
+    params.permit(:price, :ticker_symbol)
+end 
+
 end

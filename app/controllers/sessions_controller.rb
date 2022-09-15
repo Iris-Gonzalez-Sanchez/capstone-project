@@ -9,7 +9,7 @@ class SessionsController < ApplicationController
             render json: user, status: :ok
 
         else
-            render json:{error: {User: "Not Authorized"}}, status: :unauthorized
+            render json:{error: "Invalid Username or Password"}, status: :unauthorized
         end
     end
 
